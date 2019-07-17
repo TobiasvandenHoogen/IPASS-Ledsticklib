@@ -12,10 +12,11 @@
 SOURCES := New_Ledsticklib.cpp
 
 # header files in this project
-HEADERS := New_Ledsticklib.hpp
-
+HEADERS := New_Ledsticklib.hpp 
 # other places to look for files for this project
 SEARCH  := 
+
+
 
 # set BMPTK to the next higher directory and defer to the Makefile.due
 # set RELATIVE to the next higher directory 
