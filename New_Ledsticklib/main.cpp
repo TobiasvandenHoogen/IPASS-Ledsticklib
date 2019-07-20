@@ -1,10 +1,10 @@
 #include "New_Ledsticklib.hpp"
 
 int main(){
-    hwlib::xy total(8, 1);
-    hwlib::color(50, 50, 50);
-    uint32_t portnum = 4;
-    uint32_t pin = 8;
-    New_Ledsticklib led(total, pin, portnum);
-    led.test();
-}
+    hwlib::xy pixels(1, 8);
+    constexpr uint32_t portnum = 1;
+    constexpr uint32_t pin = 27;
+    New_ledsticklib led(pixels, pin, portnum);
+    hwlib::wait_ms(1);
+        led.flush();
+    }
