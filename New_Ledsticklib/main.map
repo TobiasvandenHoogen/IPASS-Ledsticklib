@@ -6,6 +6,8 @@ Archive member included to satisfy reference by file (symbol)
                               /usr/bin/../lib/gcc/arm-none-eabi/7.3.1/thumb/v7-m/libgcc.a(_aeabi_uldivmod.o) (__udivmoddi4)
 /usr/bin/../lib/gcc/arm-none-eabi/7.3.1/thumb/v7-m/libgcc.a(_dvmd_tls.o)
                               /usr/bin/../lib/gcc/arm-none-eabi/7.3.1/thumb/v7-m/libgcc.a(_aeabi_uldivmod.o) (__aeabi_ldiv0)
+/usr/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc.a(lib_a-memset.o)
+                              main.o (memset)
 
 Allocating common symbols
 Common symbol       size              file
@@ -14,6 +16,37 @@ __dso_handle        0x4               bmptk_cortex.o
 
 Discarded input sections
 
+ .group         0x0000000000000000        0xc New_Ledsticklib.o
+ .group         0x0000000000000000        0xc New_Ledsticklib.o
+ .text          0x0000000000000000        0x0 New_Ledsticklib.o
+ .data          0x0000000000000000        0x0 New_Ledsticklib.o
+ .bss           0x0000000000000000        0x0 New_Ledsticklib.o
+ .text._ZN3due8pin_infoENS_4pinsE
+                0x0000000000000000       0x20 New_Ledsticklib.o
+ .text._ZN3due11ad_pin_infoENS_7ad_pinsE
+                0x0000000000000000       0x1c New_Ledsticklib.o
+ .text._ZN3due11ad_seq_infoEm
+                0x0000000000000000       0x20 New_Ledsticklib.o
+ .text._ZN3due14port_registersEm
+                0x0000000000000000       0x54 New_Ledsticklib.o
+ .text._ZN5hwlib9uart_putcEc
+                0x0000000000000000        0x4 New_Ledsticklib.o
+ .text._ZN5hwlib19uart_char_availableEv
+                0x0000000000000000        0x4 New_Ledsticklib.o
+ .text._ZN5hwlib9uart_getcEv
+                0x0000000000000000        0x4 New_Ledsticklib.o
+ .text._ZN15New_ledsticklib8confportEi
+                0x0000000000000000       0x18 New_Ledsticklib.o
+ .text._ZN15New_ledsticklib8checkbitEhi
+                0x0000000000000000        0xe New_Ledsticklib.o
+ .rodata._ZN3due8pin_infoENS_4pinsE.str1.1
+                0x0000000000000000       0x37 New_Ledsticklib.o
+ .rodata._ZZN3due11ad_pin_infoENS_7ad_pinsEE17ad_pin_info_array
+                0x0000000000000000        0xc New_Ledsticklib.o
+ .rodata._ZZN3due11ad_seq_infoEmE12ad_seq_array
+                0x0000000000000000       0x70 New_Ledsticklib.o
+ .rodata._ZZN3due8pin_infoENS_4pinsEE14pin_info_array
+                0x0000000000000000       0xa4 New_Ledsticklib.o
  .group         0x0000000000000000        0x8 hwlib.o
  .group         0x0000000000000000        0x8 hwlib.o
  .group         0x0000000000000000        0x8 hwlib.o
@@ -639,6 +672,8 @@ Discarded input sections
                 0x0000000000000000       0x26 hwlib.o
  .text._ZN5hwlib21port_in_out_from_oc_t5writeEj
                 0x0000000000000000        0xe hwlib.o
+ .text._ZN5hwlib5panicEPKcj
+                0x0000000000000000        0x2 hwlib.o
  .text._ZN5hwlib21pin_out_from_in_out_tC2ERNS_10pin_in_outE
                 0x0000000000000000       0x24 hwlib.o
  .text._ZN5hwlib12pin_out_fromERNS_6pin_ocE
@@ -743,6 +778,8 @@ Discarded input sections
                 0x0000000000000000       0x54 hwlib.o
  .text._ZN5hwlib6invertERKNS_5imageE
                 0x0000000000000000       0x18 hwlib.o
+ .text._ZN5hwlib6window5writeENS_2xyENS_5colorE
+                0x0000000000000000       0x3e hwlib.o
  .text._ZN5hwlib6circle4drawERNS_6windowE
                 0x0000000000000000      0x18a hwlib.o
  .text._ZN5hwlib4line4drawERNS_6windowE
@@ -751,12 +788,20 @@ Discarded input sections
                 0x0000000000000000       0x20 hwlib.o
  .text._ZN5hwlib15random_in_rangeEjj
                 0x0000000000000000       0x1a hwlib.o
+ .text._ZN6sam3xa10SystemInitEv
+                0x0000000000000000       0x7c hwlib.o
  .text._ZN3due8pin_infoENS_4pinsE
                 0x0000000000000000       0x20 hwlib.o
  .text._ZN3due11ad_pin_infoENS_7ad_pinsE
                 0x0000000000000000       0x1c hwlib.o
  .text._ZN3due11ad_seq_infoEm
                 0x0000000000000000       0x20 hwlib.o
+ .text._ZN3due14port_registersEm
+                0x0000000000000000       0x54 hwlib.o
+ .text._ZN3due12ticks_per_usEv
+                0x0000000000000000        0x6 hwlib.o
+ .text._ZN3due9now_ticksEv
+                0x0000000000000000       0x80 hwlib.o
  .text._ZN3due9uart_initEv
                 0x0000000000000000       0x60 hwlib.o
  .text._ZN3due19uart_char_availableEv
@@ -780,6 +825,8 @@ Discarded input sections
  .text._ZN5hwlib9now_ticksEv
                 0x0000000000000000        0x8 hwlib.o
  .text._ZN5hwlib12ticks_per_usEv
+                0x0000000000000000        0x8 hwlib.o
+ .text._ZN5hwlib7wait_usEi
                 0x0000000000000000        0x8 hwlib.o
  .text._ZN5hwlib12wait_ns_busyEi
                 0x0000000000000000       0x14 hwlib.o
@@ -931,6 +978,12 @@ Discarded input sections
                 0x0000000000000000        0x4 hwlib.o
  .bss._ZN5hwlib21_equal_failures_countE
                 0x0000000000000000        0x4 hwlib.o
+ .bss._ZZN3due9now_ticksEvE4high
+                0x0000000000000000        0x8 hwlib.o
+ .bss._ZZN3due9now_ticksEvE8last_low
+                0x0000000000000000        0x4 hwlib.o
+ .bss._ZZN3due9now_ticksEvE9init_done
+                0x0000000000000000        0x1 hwlib.o
  .bss._ZZN3due9uart_initEvE9init_done
                 0x0000000000000000        0x1 hwlib.o
  .bss._ZZN5hwlib4randEvE1n
@@ -949,6 +1002,10 @@ Discarded input sections
                 0x0000000000000000        0x4 hwlib.o
  .data._ZN5hwlib4coutE
                 0x0000000000000000       0x14 hwlib.o
+ .data._ZN6sam3xa15SystemCoreClockE
+                0x0000000000000000        0x4 hwlib.o
+ .rodata._ZN3due8pin_infoENS_4pinsE.str1.1
+                0x0000000000000000       0x37 hwlib.o
  .rodata._ZN5hwlib15font_16x16_dataE
                 0x0000000000000000      0xbe4 hwlib.o
  .rodata._ZN5hwlib16font_default_8x86imagesE
@@ -969,20 +1026,10 @@ Discarded input sections
                 0x0000000000000000       0x70 hwlib.o
  .rodata._ZZN3due8pin_infoENS_4pinsEE14pin_info_array
                 0x0000000000000000       0xa4 hwlib.o
- .group         0x0000000000000000        0x8 main.o
- .group         0x0000000000000000        0x8 main.o
- .group         0x0000000000000000        0xc main.o
- .group         0x0000000000000000        0xc main.o
- .group         0x0000000000000000        0xc main.o
- .group         0x0000000000000000        0x8 main.o
- .group         0x0000000000000000        0xc main.o
- .group         0x0000000000000000        0xc main.o
  .group         0x0000000000000000        0xc main.o
  .text          0x0000000000000000        0x0 main.o
  .data          0x0000000000000000        0x0 main.o
  .bss           0x0000000000000000        0x0 main.o
- .text._ZN5hwlib6window5writeENS_2xyENS_5colorE
-                0x0000000000000000       0x3e main.o
  .text._ZN6sam3xa10SystemInitEv
                 0x0000000000000000       0x7c main.o
  .text._ZN3due8pin_infoENS_4pinsE
@@ -1043,6 +1090,9 @@ Discarded input sections
  .ARM.extab     0x0000000000000000        0x0 /usr/bin/../lib/gcc/arm-none-eabi/7.3.1/thumb/v7-m/libgcc.a(_udivmoddi4.o)
  .data          0x0000000000000000        0x0 /usr/bin/../lib/gcc/arm-none-eabi/7.3.1/thumb/v7-m/libgcc.a(_dvmd_tls.o)
  .bss           0x0000000000000000        0x0 /usr/bin/../lib/gcc/arm-none-eabi/7.3.1/thumb/v7-m/libgcc.a(_dvmd_tls.o)
+ .text          0x0000000000000000        0x0 /usr/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc.a(lib_a-memset.o)
+ .data          0x0000000000000000        0x0 /usr/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc.a(lib_a-memset.o)
+ .bss           0x0000000000000000        0x0 /usr/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc.a(lib_a-memset.o)
 
 Memory Configuration
 
@@ -1055,6 +1105,7 @@ nul              0x0000000020018000 0x0000000000000000 xrw
 Linker script and memory map
 
 LOAD /usr/bin/../lib/gcc/arm-none-eabi/7.3.1/thumb/v7-m/libgcc.a
+LOAD New_Ledsticklib.o
 LOAD hwlib.o
 LOAD main.o
 LOAD bmptk_cortex.o
@@ -1076,7 +1127,7 @@ LOAD /usr/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb
                 [!provide]                        PROVIDE (__ram_size = __ram_size)
                 [!provide]                        PROVIDE (__ram_end = __ram_end)
 
-.text           0x0000000000000000      0x72c
+.text           0x0000000000000000      0x7c0
                 0x0000000000000000                . = ALIGN (0x4)
                 0x0000000000000000                __text_start = .
                 [!provide]                        PROVIDE (__text_start = __text_start)
@@ -1086,125 +1137,119 @@ LOAD /usr/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb
                 0x0000000000000000                __vectors
                 0x0000000000000020                . = ALIGN (0x4)
  *(.text .text.* .gnu.linkonce.t.*)
- .text._ZN5hwlib5panicEPKcj
-                0x0000000000000020        0x2 hwlib.o
-                0x0000000000000020                hwlib::panic(char const*, unsigned int)
- .text._ZN5hwlib3allENS_2xyE
-                0x0000000000000022       0x16 hwlib.o
-                0x0000000000000022                hwlib::all(hwlib::xy)
- .text._ZN5hwlib6window5writeENS_2xyENS_5colorE
-                0x0000000000000038       0x3e hwlib.o
-                0x0000000000000038                hwlib::window::write(hwlib::xy, hwlib::color)
- *fill*         0x0000000000000076        0x2 
- .text._ZN6sam3xa10SystemInitEv
-                0x0000000000000078       0x7c hwlib.o
-                0x0000000000000078                sam3xa::SystemInit()
- .text._ZN3due14port_registersEm
-                0x00000000000000f4       0x54 hwlib.o
-                0x00000000000000f4                due::port_registers(unsigned long)
- .text._ZN3due12ticks_per_usEv
-                0x0000000000000148        0x6 hwlib.o
-                0x0000000000000148                due::ticks_per_us()
- *fill*         0x000000000000014e        0x2 
- .text._ZN3due9now_ticksEv
-                0x0000000000000150       0x80 hwlib.o
-                0x0000000000000150                due::now_ticks()
- .text._ZN5hwlib6now_usEv
-                0x00000000000001d0       0x1c hwlib.o
-                0x00000000000001d0                hwlib::now_us()
- .text._ZN5hwlib12wait_us_busyEi
-                0x00000000000001ec       0x1c hwlib.o
-                0x00000000000001ec                hwlib::wait_us_busy(int)
- .text._ZN5hwlib7wait_usEi
-                0x0000000000000208        0x8 hwlib.o
-                0x0000000000000208                hwlib::wait_us(int)
- .text._ZN5hwlib12wait_ms_busyEi
-                0x0000000000000210       0x16 hwlib.o
-                0x0000000000000210                hwlib::wait_ms_busy(int)
- .text._ZN5hwlib7wait_msEi
-                0x0000000000000226        0x8 hwlib.o
-                0x0000000000000226                hwlib::wait_ms(int)
  .text._ZN15New_ledsticklib20write_implementationEN5hwlib2xyENS0_5colorE
-                0x000000000000022e        0xc main.o
-                0x000000000000022e                New_ledsticklib::write_implementation(hwlib::xy, hwlib::color)
+                0x0000000000000020       0x18 New_Ledsticklib.o
+                0x0000000000000020                New_ledsticklib::write_implementation(hwlib::xy, hwlib::color)
  .text._ZN5hwlib6window5clearENS_5colorE
-                0x000000000000023a       0x46 main.o
-                0x000000000000023a                hwlib::window::clear(hwlib::color)
- .text._ZN5hwlib6window5clearEv
-                0x0000000000000280       0x44 main.o
-                0x0000000000000280                hwlib::window::clear()
- *fill*         0x00000000000002c4        0xc 
+                0x0000000000000038       0x64 New_Ledsticklib.o
+                0x0000000000000038                hwlib::window::clear(hwlib::color)
+ .text._ZN6sam3xa10SystemInitEv
+                0x000000000000009c       0x7c New_Ledsticklib.o
+                0x000000000000009c                sam3xa::SystemInit()
+ .text._ZN3due12ticks_per_usEv
+                0x0000000000000118        0x6 New_Ledsticklib.o
+                0x0000000000000118                due::ticks_per_us()
+ *fill*         0x000000000000011e        0x2 
+ .text._ZN3due9now_ticksEv
+                0x0000000000000120       0x80 New_Ledsticklib.o
+                0x0000000000000120                due::now_ticks()
  .text._ZN15New_ledsticklib9wait_busyEl
-                0x00000000000002d0        0x8 main.o
-                0x00000000000002d0                New_ledsticklib::wait_busy(long)
+                0x00000000000001a0        0x8 New_Ledsticklib.o
+                0x00000000000001a0                New_ledsticklib::wait_busy(long)
+ .text._ZN15New_ledsticklib7sendBitEb
+                0x00000000000001a8       0x50 New_Ledsticklib.o
+                0x00000000000001a8                New_ledsticklib::sendBit(bool)
  .text._ZN15New_ledsticklib8sendByteEh
-                0x00000000000002d8       0x44 main.o
-                0x00000000000002d8                New_ledsticklib::sendByte(unsigned char)
+                0x00000000000001f8       0x26 New_Ledsticklib.o
+                0x00000000000001f8                New_ledsticklib::sendByte(unsigned char)
+ .text._ZN15New_ledsticklib5clearEv
+                0x000000000000021e       0x1e New_Ledsticklib.o
+                0x000000000000021e                New_ledsticklib::clear()
+ .text._ZN15New_ledsticklib9showcolorEv
+                0x000000000000023c       0x1e New_Ledsticklib.o
+                0x000000000000023c                New_ledsticklib::showcolor()
  .text._ZN15New_ledsticklib5flushEv
-                0x000000000000031c       0x2c main.o
-                0x000000000000031c                New_ledsticklib::flush()
+                0x000000000000025a       0x64 New_Ledsticklib.o
+                0x000000000000025a                New_ledsticklib::flush()
+ .text._ZN5hwlib3allENS_2xyE
+                0x00000000000002be       0x16 hwlib.o
+                0x00000000000002be                hwlib::all(hwlib::xy)
+ .text._ZN5hwlib6now_usEv
+                0x00000000000002d4       0x1c hwlib.o
+                0x00000000000002d4                hwlib::now_us()
+ .text._ZN5hwlib12wait_us_busyEi
+                0x00000000000002f0       0x1c hwlib.o
+                0x00000000000002f0                hwlib::wait_us_busy(int)
+ .text._ZN5hwlib12wait_ms_busyEi
+                0x000000000000030c       0x16 hwlib.o
+                0x000000000000030c                hwlib::wait_ms_busy(int)
+ .text._ZN5hwlib7wait_msEi
+                0x0000000000000322        0x8 hwlib.o
+                0x0000000000000322                hwlib::wait_ms(int)
+ *fill*         0x000000000000032a        0x2 
  .text.startup.main
-                0x0000000000000348       0x48 main.o
-                0x0000000000000348                main
+                0x000000000000032c       0x90 main.o
+                0x000000000000032c                main
  .text.__startup
-                0x0000000000000390       0x48 bmptk_cortex.o
-                0x0000000000000390                __startup
- .text          0x00000000000003d8       0x30 /usr/bin/../lib/gcc/arm-none-eabi/7.3.1/thumb/v7-m/libgcc.a(_aeabi_uldivmod.o)
-                0x00000000000003d8                __aeabi_uldivmod
- .text          0x0000000000000408      0x2d0 /usr/bin/../lib/gcc/arm-none-eabi/7.3.1/thumb/v7-m/libgcc.a(_udivmoddi4.o)
-                0x0000000000000408                __udivmoddi4
- .text          0x00000000000006d8        0x4 /usr/bin/../lib/gcc/arm-none-eabi/7.3.1/thumb/v7-m/libgcc.a(_dvmd_tls.o)
-                0x00000000000006d8                __aeabi_ldiv0
-                0x00000000000006dc                . = ALIGN (0x4)
+                0x00000000000003bc       0x48 bmptk_cortex.o
+                0x00000000000003bc                __startup
+ .text          0x0000000000000404       0x30 /usr/bin/../lib/gcc/arm-none-eabi/7.3.1/thumb/v7-m/libgcc.a(_aeabi_uldivmod.o)
+                0x0000000000000404                __aeabi_uldivmod
+ .text          0x0000000000000434      0x2d0 /usr/bin/../lib/gcc/arm-none-eabi/7.3.1/thumb/v7-m/libgcc.a(_udivmoddi4.o)
+                0x0000000000000434                __udivmoddi4
+ .text          0x0000000000000704        0x4 /usr/bin/../lib/gcc/arm-none-eabi/7.3.1/thumb/v7-m/libgcc.a(_dvmd_tls.o)
+                0x0000000000000704                __aeabi_ldiv0
+ .text.memset   0x0000000000000708       0x94 /usr/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc.a(lib_a-memset.o)
+                0x0000000000000708                memset
+                0x000000000000079c                . = ALIGN (0x4)
  *(.glue_7t .glue_7)
- .glue_7        0x00000000000006dc        0x0 linker stubs
- .glue_7t       0x00000000000006dc        0x0 linker stubs
-                0x00000000000006dc                . = ALIGN (0x4)
+ .glue_7        0x000000000000079c        0x0 linker stubs
+ .glue_7t       0x000000000000079c        0x0 linker stubs
+                0x000000000000079c                . = ALIGN (0x4)
  *(.rodata .rodata.* .gnu.linkonce.r.*)
- .rodata._ZN3due8pin_infoENS_4pinsE.str1.1
-                0x00000000000006dc       0x37 hwlib.o
- *fill*         0x0000000000000713        0x1 
+ .rodata.CSWTCH.289
+                0x000000000000079c        0xc New_Ledsticklib.o
  .rodata._ZTV15New_ledsticklib
-                0x0000000000000714       0x18 main.o
-                0x0000000000000714                vtable for New_ledsticklib
-                0x000000000000072c                . = ALIGN (0x4)
+                0x00000000000007a8       0x18 New_Ledsticklib.o
+                0x00000000000007a8                vtable for New_ledsticklib
+                0x00000000000007c0                . = ALIGN (0x4)
  *(.ARM.extab* .gnu.linkonce.armextab.*)
-                0x000000000000072c                . = ALIGN (0x4)
+                0x00000000000007c0                . = ALIGN (0x4)
  *(.gcc_except_table)
-                0x000000000000072c                . = ALIGN (0x4)
+                0x00000000000007c0                . = ALIGN (0x4)
  *(.eh_frame_hdr)
-                0x000000000000072c                . = ALIGN (0x4)
+                0x00000000000007c0                . = ALIGN (0x4)
  *(.eh_frame)
-                0x000000000000072c                . = ALIGN (0x4)
-                0x000000000000072c                __text_end = .
+                0x00000000000007c0                . = ALIGN (0x4)
+                0x00000000000007c0                __text_end = .
                 [!provide]                        PROVIDE (__text_end = __text_end)
 
-.vfp11_veneer   0x000000000000072c        0x0
- .vfp11_veneer  0x000000000000072c        0x0 linker stubs
+.vfp11_veneer   0x00000000000007c0        0x0
+ .vfp11_veneer  0x00000000000007c0        0x0 linker stubs
 
-.v4_bx          0x000000000000072c        0x0
- .v4_bx         0x000000000000072c        0x0 linker stubs
+.v4_bx          0x00000000000007c0        0x0
+ .v4_bx         0x00000000000007c0        0x0 linker stubs
 
-.iplt           0x000000000000072c        0x0
- .iplt          0x000000000000072c        0x0 hwlib.o
+.iplt           0x00000000000007c0        0x0
+ .iplt          0x00000000000007c0        0x0 New_Ledsticklib.o
 
 .IF_YOU_SEE_THIS_YOU_HAVE_ONE_OR_MORE_GLOBAL_OBJECT_CONSTRUCTORS
  *(.init)
  *(.preinit_array)
  *(SORT_BY_NAME(.init_array.*))
  *(.init_array)
-                0x000000000000072c                . = ALIGN (0x4)
-                0x000000000000072c                __exidx_start = .
+                0x00000000000007c0                . = ALIGN (0x4)
+                0x00000000000007c0                __exidx_start = .
                 [!provide]                        PROVIDE (__exidx_start = __exidx_start)
 
-.ARM.exidx      0x000000000000072c        0x8
+.ARM.exidx      0x00000000000007c0        0x8
  *(.ARM.exidx* .gnu.linkonce.armexidx.*)
- .ARM.exidx     0x000000000000072c        0x8 /usr/bin/../lib/gcc/arm-none-eabi/7.3.1/thumb/v7-m/libgcc.a(_udivmoddi4.o)
+ .ARM.exidx     0x00000000000007c0        0x8 /usr/bin/../lib/gcc/arm-none-eabi/7.3.1/thumb/v7-m/libgcc.a(_udivmoddi4.o)
 
-.rel.dyn        0x0000000000000734        0x0
- .rel.iplt      0x0000000000000734        0x0 hwlib.o
-                0x0000000000000734                . = ALIGN (0x4)
-                0x0000000000000734                __exidx_end = .
+.rel.dyn        0x00000000000007c8        0x0
+ .rel.iplt      0x00000000000007c8        0x0 New_Ledsticklib.o
+                0x00000000000007c8                . = ALIGN (0x4)
+                0x00000000000007c8                __exidx_end = .
                 [!provide]                        PROVIDE (__exidx_end = __exidx_end)
 
 .bss            0x0000000020000000    0x12010
@@ -1227,11 +1272,11 @@ LOAD /usr/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb
                 0x0000000020012000                . = ALIGN (0x4)
  *(.bss .bss.* .gnu.linkonce.b.*)
  .bss._ZZN3due9now_ticksEvE4high
-                0x0000000020012000        0x8 hwlib.o
+                0x0000000020012000        0x8 New_Ledsticklib.o
  .bss._ZZN3due9now_ticksEvE8last_low
-                0x0000000020012008        0x4 hwlib.o
+                0x0000000020012008        0x4 New_Ledsticklib.o
  .bss._ZZN3due9now_ticksEvE9init_done
-                0x000000002001200c        0x1 hwlib.o
+                0x000000002001200c        0x1 New_Ledsticklib.o
                 0x0000000020012010                . = ALIGN (0x4)
  *fill*         0x000000002001200d        0x3 
  *(COMMON)
@@ -1239,28 +1284,28 @@ LOAD /usr/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb
                 0x0000000020012010                __bss_end = .
                 [!provide]                        PROVIDE (__bss_end = __bss_end)
 
-.data           0x0000000020012010        0x4 load address 0x0000000000000734
+.data           0x0000000020012010        0x4 load address 0x00000000000007c8
                 0x0000000020012010                . = ALIGN (0x4)
-                0x0000000000000734                __data_init_start = LOADADDR (.data)
+                0x00000000000007c8                __data_init_start = LOADADDR (.data)
                 [!provide]                        PROVIDE (__data_init_start = __data_init_start)
                 0x0000000020012010                __data_start = .
                 [!provide]                        PROVIDE (__data_start = __data_start)
                 0x0000000020012010                . = ALIGN (0x4)
  *(.data .data.* .gnu.linkonce.d.*)
  .data._ZN6sam3xa15SystemCoreClockE
-                0x0000000020012010        0x4 hwlib.o
+                0x0000000020012010        0x4 New_Ledsticklib.o
                 0x0000000020012010                sam3xa::SystemCoreClock
                 0x0000000020012014                . = ALIGN (0x4)
                 0x0000000020012014                __data_end = .
                 [!provide]                        PROVIDE (__data_end = __data_end)
-                0x0000000000000734                __data_init_end = LOADADDR (.data)
+                0x00000000000007c8                __data_init_end = LOADADDR (.data)
                 [!provide]                        PROVIDE (__data_init_end = __data_init_end)
                 [!provide]                        PROVIDE (__data_size = (__data_end - __data_start))
                 [!provide]                        PROVIDE (__data_init_size = __data_size)
                 [!provide]                        PROVIDE (__data_init_end = (__data_init_start + __data_init_size))
 
-.igot.plt       0x0000000020012014        0x0 load address 0x0000000000000738
- .igot.plt      0x0000000020012014        0x0 hwlib.o
+.igot.plt       0x0000000020012014        0x0 load address 0x00000000000007cc
+ .igot.plt      0x0000000020012014        0x0 New_Ledsticklib.o
                 0x0000000020012014                . = ALIGN (0x4)
                 0x0000000020012014                __heap_start = .
                 [!provide]                        PROVIDE (__heap_start = __heap_start)
@@ -1301,14 +1346,16 @@ LOAD /usr/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb
 .debug_line
  *(.debug_line)
 
-.debug_frame    0x0000000000000000       0x60
+.debug_frame    0x0000000000000000       0x98
  *(.debug_frame)
  .debug_frame   0x0000000000000000       0x2c /usr/bin/../lib/gcc/arm-none-eabi/7.3.1/thumb/v7-m/libgcc.a(_aeabi_uldivmod.o)
  .debug_frame   0x000000000000002c       0x34 /usr/bin/../lib/gcc/arm-none-eabi/7.3.1/thumb/v7-m/libgcc.a(_udivmoddi4.o)
+ .debug_frame   0x0000000000000060       0x38 /usr/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc.a(lib_a-memset.o)
 
 .comment        0x0000000000000000       0x7f
- .comment       0x0000000000000000       0x7f hwlib.o
+ .comment       0x0000000000000000       0x7f New_Ledsticklib.o
                                          0x80 (size before relaxing)
+ .comment       0x000000000000007f       0x80 hwlib.o
  .comment       0x000000000000007f       0x80 main.o
  .comment       0x000000000000007f       0x80 bmptk_cortex.o
  .comment       0x000000000000007f       0x80 bmptk_fixed_size_stack.o
@@ -1341,21 +1388,25 @@ LOAD /usr/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb
                 0x0000000000000000       0x33
  *(.ARM.attributes)
  .ARM.attributes
-                0x0000000000000000       0x33 hwlib.o
+                0x0000000000000000       0x33 New_Ledsticklib.o
  .ARM.attributes
-                0x0000000000000033       0x33 main.o
+                0x0000000000000033       0x33 hwlib.o
  .ARM.attributes
-                0x0000000000000066       0x33 bmptk_cortex.o
+                0x0000000000000066       0x33 main.o
  .ARM.attributes
-                0x0000000000000099       0x33 bmptk_heap_none.o
+                0x0000000000000099       0x33 bmptk_cortex.o
  .ARM.attributes
-                0x00000000000000cc       0x33 bmptk_fixed_size_stack.o
+                0x00000000000000cc       0x33 bmptk_heap_none.o
  .ARM.attributes
-                0x00000000000000ff       0x1d /usr/bin/../lib/gcc/arm-none-eabi/7.3.1/thumb/v7-m/libgcc.a(_aeabi_uldivmod.o)
+                0x00000000000000ff       0x33 bmptk_fixed_size_stack.o
  .ARM.attributes
-                0x000000000000011c       0x2d /usr/bin/../lib/gcc/arm-none-eabi/7.3.1/thumb/v7-m/libgcc.a(_udivmoddi4.o)
+                0x0000000000000132       0x1d /usr/bin/../lib/gcc/arm-none-eabi/7.3.1/thumb/v7-m/libgcc.a(_aeabi_uldivmod.o)
  .ARM.attributes
-                0x0000000000000149       0x1d /usr/bin/../lib/gcc/arm-none-eabi/7.3.1/thumb/v7-m/libgcc.a(_dvmd_tls.o)
+                0x000000000000014f       0x2d /usr/bin/../lib/gcc/arm-none-eabi/7.3.1/thumb/v7-m/libgcc.a(_udivmoddi4.o)
+ .ARM.attributes
+                0x000000000000017c       0x1d /usr/bin/../lib/gcc/arm-none-eabi/7.3.1/thumb/v7-m/libgcc.a(_dvmd_tls.o)
+ .ARM.attributes
+                0x0000000000000199       0x2d /usr/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc.a(lib_a-memset.o)
 
 /DISCARD/
  *(.note.GNU-stack)
