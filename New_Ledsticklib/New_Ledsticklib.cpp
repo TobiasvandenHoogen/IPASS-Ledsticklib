@@ -81,7 +81,7 @@ void New_ledsticklib::showcolor(){
 }
 
 
-//function which sets a single neopixel as output
+//function which declares and sets a single neopixel as output
 //DON'T PUT THIS FUNCTION IN A LONG FOR LOOP!!!!
 void New_ledsticklib::write_implementation( hwlib::xy pos, hwlib::color c ){
     start[arraylength] = pos;
@@ -89,6 +89,20 @@ void New_ledsticklib::write_implementation( hwlib::xy pos, hwlib::color c ){
     RGB_array[arraylength] = c;
     arraylength++;
     }
+
+
+void New_ledsticklib::write_change(int index, hwlib::xy pos1, hwlib::xy pos2, hwlib::color c){
+    start[index] = pos1;
+    end[index] = pos2;
+    RGB_array[index] = c;
+}
+
+void New_ledsticklib::write_line(hwlib::xy pos1, hwlib::xy pos2, hwlib::color c){
+   start[arraylength] = pos1;
+    end[arraylength] = pos2;
+    RGB_array[arraylength] = c;
+    arraylength++;
+}
 
 //function which sends bytes(depending on the given positiom )
 void New_ledsticklib::flush(){
@@ -107,7 +121,7 @@ void New_ledsticklib::flush(){
 }
 
 
-//function wich sends three bytes with value zero to cause a neopixel to 
+//function wich sends three bytes with the value zero to cause a neopixel to 
 //go off
 void New_ledsticklib::clear(){
     sendByte(0);

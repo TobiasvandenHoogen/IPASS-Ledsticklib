@@ -42,6 +42,11 @@ void showcolor();
 
 void write_implementation( hwlib::xy pos, hwlib::color c ) override;
 
+void write_change(int index, hwlib::xy pos1, hwlib::xy pos2, hwlib::color c);
+
+void write_line( hwlib::xy pos1, hwlib::xy pos2, hwlib::color c);
+
+
 bool check_xy(int x, int y);
 
 void flush() override;
