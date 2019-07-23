@@ -1,15 +1,20 @@
 #include "New_Ledsticklib.hpp"
 
+//function which returns a port depending on the giving parameter
 auto New_ledsticklib::confport(int port){
     switch(port){
         case 0: return PIOA;
         case 1: return PIOB;
         case 2: return PIOC;
         case 3: return PIOD;
-        default: return PIOA;
+        default: return PIOA; //if the parameter doesn't match with the cases
     }
 }
 
+
+//assembly functions which waits at least 3 cycles (33 nanoseconds) times
+//the given value. this function is used to create a delay in the sendBit
+//function
 void New_ledsticklib::wait_busy( int32_t n ){
    __asm volatile(                  
       "   .align 4           \t\n"  
@@ -20,32 +25,47 @@ void New_ledsticklib::wait_busy( int32_t n ){
 }
 
 
+//function which checks if a bit from a byte is 0 or 1
 int New_ledsticklib::checkbit(uint8_t value, int number){
-    value = value & (1 << number);
-    value = value >> number;
-    return value;
+    value = value & (1 << number); //to make sure only the chosen index remains
+    value = value >> number;       //shift chosen index all the way to the right
+    return value;                  //return value is either 0 or 1
 }
 
+bool New_ledsticklib::check_xy(int x, int y){
+for(int i = 0; i < arraylength; i++){
+ if((y >= start[i].y) && (y <= end[i].y)){
+    if((x >= start[i].x) && (x <= end[i].x)){
+        colorindex = i;
+        return true;
+    }
+    }
+}
+    return false;
+}
 
+//function which sets a bit of a stick(depending on fush function) as
+//output and sends a 0 or 1 bit depending on the bit parameter
 void New_ledsticklib::sendBit(bool bit){
 auto porta = confport(portarray[stick]);
 auto maska = confmask(pinarray[stick]);
 porta->PIO_OER = maska;
 if(bit){
-    porta->PIO_SODR = maska;
-    wait_busy(58);
-    porta->PIO_CODR = maska;
-    wait_busy(20);
+    porta->PIO_SODR = maska; //pin high 
+    wait_busy(58);           //wait 58 * 11 = 638 nanoseconds
+    porta->PIO_CODR = maska; //pin low
+    wait_busy(20);           //wait 20 * 11 = 220 nanoseconds
 }
 
 else{
-    porta->PIO_SODR = maska;
-    wait_busy(5);
-    porta->PIO_CODR = maska;
-    wait_busy(58);
+    porta->PIO_SODR = maska; //pin high
+    wait_busy(10);           //wait 10 * 11 = 110 nanoseconds
+    porta->PIO_CODR = maska; //pin low   
+    wait_busy(58);           //wait 58 * 11 = 638 nanoseconds
 }
 }
 
+//function wich takes the parameter value and sends each bit with sendBit
 void New_ledsticklib::sendByte(uint8_t value){
 for(int i = 7; i >= 0; i--){
     int bit = checkbit(value, i);
@@ -53,43 +73,42 @@ for(int i = 7; i >= 0; i--){
 }
 }
 
-
+//function which sends each colovalue(byte) in this order: green, red and blue
 void New_ledsticklib::showcolor(){
-    sendByte(GRB.green);
-    sendByte(GRB.red);
-    sendByte(GRB.blue);
+    sendByte(RGB_array[colorindex].green);
+    sendByte(RGB_array[colorindex].red);
+    sendByte(RGB_array[colorindex].blue);
 }
 
+
+//function which sets a single neopixel as output
+//DON'T PUT THIS FUNCTION IN A LONG FOR LOOP!!!!
 void New_ledsticklib::write_implementation( hwlib::xy pos, hwlib::color c ){
-    position.x = pos.x;
-    position.y = pos.y;
-    GRB = c;
-}
+    start[arraylength] = pos;
+    end[arraylength] = pos;
+    RGB_array[arraylength] = c;
+    arraylength++;
+    }
 
+//function which sends bytes(depending on the given positiom )
 void New_ledsticklib::flush(){
-       hwlib::wait_ms(50);
     for(int y = 0; y < size.y; y++){
         stick = y;
-        if((y == position.y) || (position.y == size.y)){
             for(int x = 0; x < size.x; x++){
-                if((x == position.x) || (position.x == size.x)){
+                if(check_xy(x, y)){
                     showcolor();
                 }
                 else{
                     clear();
                 }
             }
-            hwlib::wait_ms(50);
+            hwlib::wait_us(50);
         }
-        else{
-            for(int x = 0; x < size.x; x++){
-                clear();
-            }
-            hwlib::wait_ms(50);
-        }
-    }
 }
 
+
+//function wich sends three bytes with value zero to cause a neopixel to 
+//go off
 void New_ledsticklib::clear(){
     sendByte(0);
     sendByte(0);

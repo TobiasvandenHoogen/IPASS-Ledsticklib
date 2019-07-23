@@ -11,6 +11,11 @@ hwlib::xy position;
 int* portarray;
 int* pinarray;
 int stick;
+int colorindex = 0;
+hwlib::xy start[99];
+hwlib::xy end[99];
+int arraylength = 0;
+hwlib::color RGB_array[99];
 
 public:
 New_ledsticklib(hwlib::xy total_pixels, int* portarray, int* pinarray):
@@ -36,6 +41,8 @@ void sendByte(uint8_t value);
 void showcolor();
 
 void write_implementation( hwlib::xy pos, hwlib::color c ) override;
+
+bool check_xy(int x, int y);
 
 void flush() override;
 

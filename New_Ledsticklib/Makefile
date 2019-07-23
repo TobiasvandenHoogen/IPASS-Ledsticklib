@@ -9,10 +9,10 @@
 #############################################################################
 
 # source files in this project (main.cpp is automatically assumed)
-SOURCES := New_Ledsticklib.cpp
+SOURCES := New_Ledsticklib.cpp 
 
 # header files in this project
-HEADERS := New_Ledsticklib.hpp 
+HEADERS := New_Ledsticklib.hpp game.hpp
 # other places to look for files for this project
 SEARCH  := 
 
