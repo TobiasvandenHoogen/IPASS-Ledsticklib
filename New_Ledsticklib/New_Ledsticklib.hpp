@@ -1,26 +1,37 @@
+/*!
+@file Ledsticklib.hpp
+*This is the header file of the New_Ledsticklib Library. The functions declared
+in the class are elaborated in the cpp file.
+@mainpage Library for driving Adafruit Neopixel and other WS2812 led.
+ */
+
 #include "hwlib.hpp"
 
 #ifndef NEW_LEDSTICKLIB_HPP
 #define NEW_LEDSTICKLIB_HPP
 
+
+/*!
+@brief
+*This is the class for WS2812 leds. The class is a subclass and is based on
+*window from the hwlib library. In the protected specifier are variables stored
+*like the portarray and pinarray which stores the port and bit of each pin
+*given in the contructor. The other variables like  
+*/
 class New_ledsticklib: public hwlib::window{
 
+const int x_size = 8;
+const int y_size = 7;
+
 protected:
+
+//variables
 int* portarray;
 int* pinarray;
 int stick;
-int colorindex = 0;
-hwlib::xy start[99];
-hwlib::xy end[99];
-int arraylength = 0;
-hwlib::color RGB_array[99];
+hwlib::color* buffer;
 
-public:
-New_ledsticklib(hwlib::xy total_pixels, int* portarray, int* pinarray):
-window(total_pixels),
-portarray(portarray),
-pinarray(pinarray)
-{}
+//functions
 
 auto confport(int port);
 
@@ -36,26 +47,30 @@ void sendBit(bool bit);
 
 void sendByte(uint8_t value);
 
-void showcolor();
+public:
+
+/*!
+@brief
+*This is the constructor of the library. To call the object you need three
+*values. At first an hwlib::xy value so that all leds will be configured. 
+*Secondly an array of the portletter from each pin, and at last an pinarray 
+*which consist of the portnumber from each pin.
+*/
+New_ledsticklib(hwlib::xy total_pixels, int* portarray, int* pinarray):
+window(total_pixels),
+portarray(portarray),
+pinarray(pinarray)
+{}
 
 void write_implementation( hwlib::xy pos, hwlib::color c ) override;
 
-void write_change(int index, hwlib::xy pos1, hwlib::xy pos2, hwlib::color c);
-
-void write_change(int index, hwlib::xy pos1, hwlib::color c);
-
-void write_line( hwlib::xy pos1, hwlib::xy pos2, hwlib::color c);
-
-void write_rectangle(hwlib::xy pos1, hwlib::xy pos2, hwlib::color c);
-
-
-bool check_xy(int x, int y);
+void write( hwlib::xy pos, hwlib::color c);
 
 void flush() override;
 
 void reset();
 
-void clear();
+void clear() override;
 
 };
 

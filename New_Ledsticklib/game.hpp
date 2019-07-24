@@ -1,17 +1,16 @@
 #include "New_Ledsticklib.hpp"
 
-class game: public New_ledsticklib {
+class game {
 
 protected:
 int lives = 3;
-int ports[7] = {1, 3, 3, 2, 2, 2, 2};
-int pins[7] = {27, 8, 7, 29, 21, 22, 23};
+hwlib::window & w;
 int leftcatch = 3;
 int rightcatch = 4;
 
 public:
-game():
-New_ledsticklib(hwlib::xy(8, 7), ports, pins)
+game(hwlib::window & w):
+w( w )
 {}
 
 int randomnumber(){
@@ -21,44 +20,51 @@ int randomnumber(){
 }
 
 int randrange(){
-return randomnumber() % (6 + 1 - 1) + 1;
+    return randomnumber() % (6 + 1 - 1) + 1;
 }
 
 void maingame(){
-wait();
+    w.clear();
+    wait();
 }
 
 void wait(){
-    auto button1 = hwlib::target::pin_in(hwlib::target::pins::d5);
+    auto button1 = hwlib::target::pin_in(hwlib::target::pins::d5); //leftbutton
     hwlib::color C[3]{hwlib::color(10, 0, 0), 
     hwlib::color(0,10,0), 
     hwlib::color(0,0,10)};
     hwlib::wait_ms(1);
+
     for(;;){
-    for(int c = 0; c < 3; c++){
-    for(int i = 0; i < size.x; i++){
-        write_implementation(hwlib::xy(i, 8), C[c]);
-        button1.refresh();
-        flush();
-        hwlib::wait_ms(50);
-        if(button1.read() == 1){
-        write_implementation(hwlib::xy(8, 8), hwlib::color(0,0,0));
-        flush();
-        reset();
-        fallingball();
-    }
-        reset();
-    }
-    }
+        for(int c = 0; c < 3; c++){
+            for(int i = 0; i < w.size.x; i++){
+                for(int j = 0; j < w.size.y; j++){
+                    w.write(hwlib::xy(i, j), C[c]);
+                    button1.refresh();
+                    w.flush();
+
+                if(button1.read() == 1){
+                    w.clear();
+                    w.flush();
+                    fallingball();
+                }
+
+
+                }
+                hwlib::wait_ms(50);
+                w.clear();
+            }
+
+        }
     }
 }
 
 void fallingball(){
- hwlib::wait_ms(1);
- auto button1 = hwlib::target::pin_in(hwlib::target::pins::d4);
- auto button2 = hwlib::target::pin_in(hwlib::target::pins::d5);
+    hwlib::wait_ms(1);
+    auto button1 = hwlib::target::pin_in(hwlib::target::pins::d4);
+    auto button2 = hwlib::target::pin_in(hwlib::target::pins::d5);
     for(;;){
-    int random_num = randrange();
+        int num = randrange();
         if(lives == 0){
             lives = 3;
             break;
@@ -77,15 +83,16 @@ void fallingball(){
             hwlib::wait_ms(50);
         }
         if(i == 1){
-            if((random_num != leftcatch) && (random_num != rightcatch)){
+            if((num != leftcatch) && (num != rightcatch)){
                 lives--;
             }
         }
-        write_implementation(hwlib::xy(random_num, i), hwlib::color(10, 0,0));
-        write_line(hwlib::xy(leftcatch, 0), hwlib::xy(rightcatch, 0), hwlib::color(0, 0, 10));
-        flush();
+        w.write(hwlib::xy(num, i), hwlib::color(10, 0,0));
+        w.write(hwlib::xy(leftcatch, 0), hwlib::color(0, 0, 10));
+        w.write(hwlib::xy(rightcatch, 0), hwlib::color(0, 0, 10));
+        w.flush();
         hwlib::wait_ms(250);
-        reset();
+        w.clear();
     }
     }
 }

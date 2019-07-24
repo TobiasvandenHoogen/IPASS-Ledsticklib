@@ -1,6 +1,16 @@
+/*!
+@file Ledsticklib.cpp
+*This is the source file of the New_Ledsticklib library. 
+ */
+
 #include "New_Ledsticklib.hpp"
 
-//function which returns a port depending on the giving parameter
+/*! 
+@brief
+*Function which returns a port depending on the giving parameter.
+@param
+*port    the given integer of the protected portarray
+*/
 auto New_ledsticklib::confport(int port){
     switch(port){
         case 0: return PIOA;
@@ -11,10 +21,13 @@ auto New_ledsticklib::confport(int port){
     }
 }
 
-
-//assembly functions which waits at least 3 cycles (33 nanoseconds) times
-//the given value. this function is used to create a delay in the sendBit
-//function
+/*! 
+@brief
+*Assembly function which waits at least 3 cycles (33 nanoseconds) times
+*the given value. this function is used to create a delay in the sendBit
+@param
+*n  the number of cycles times three
+*/
 void New_ledsticklib::wait_busy( int32_t n ){
    __asm volatile(                  
       "   .align 4           \t\n"  
@@ -24,35 +37,34 @@ void New_ledsticklib::wait_busy( int32_t n ){
    ); 
 }
 
-
-//function which checks if a bit from a byte is 0 or 1
+/*! 
+@brief
+*function which checks if a bit from a byte is 0 or 1
+@param
+value   the 8 bit value
+@param
+number  the index of the bit you want to check
+*/
 int New_ledsticklib::checkbit(uint8_t value, int number){
     value = value & (1 << number); //to make sure only the chosen index remains
     value = value >> number;       //shift chosen index all the way to the right
     return value;                  //return value is either 0 or 1
 }
 
-bool New_ledsticklib::check_xy(int x, int y){
-for(int i = 0; i < arraylength; i++){
- if(((y >= start[i].y) && (y <= end[i].y)) || (start[i].y == 8)){
-    if(((x >= start[i].x) && (x <= end[i].x)) || (start[i].x == 8)){
-        colorindex = i;
-        return true;
-    }
-    }
-}
-    return false;
-}
-
-//function which sets a bit of a stick(depending on fush function) as
-//output and sends a 0 or 1 bit depending on the bit parameter
+/*!
+@brief
+*function which sets a bit of a stick(depending on fush function) as
+*output and sends a 0 or 1 bit depending on the bit parameter
+@param
+bit the type of bit you want to send(0 or 1)
+*/
 void New_ledsticklib::sendBit(bool bit){
 auto port = confport(portarray[stick]);
 auto mask = confmask(pinarray[stick]);
 port->PIO_OER = mask;
 if(bit){
     port->PIO_SODR = mask; //pin high 
-    wait_busy(58);           //wait 58 * 11 = 638 nanoseconds
+    wait_busy(58);           //wait 58 * 33 = 638 nanoseconds
     port->PIO_CODR = mask; //pin low
     wait_busy(20);           //wait 20 * 11 = 220 nanoseconds
 }
@@ -65,65 +77,72 @@ else{
 }
 }
 
-//function wich takes the parameter value and sends each bit with sendBit
+/*!
+@brief
+*function wich takes the parameter value and sends each bit with sendBit
+@param
+value   the byte you want to send
+*/
 void New_ledsticklib::sendByte(uint8_t value){
-for(int i = 7; i >= 0; i--){
-    int bit = checkbit(value, i);
-    this->sendBit(bit);
-}
-}
-
-//function which sends each colovalue(byte) in this order: green, red and blue
-void New_ledsticklib::showcolor(){
-    sendByte(RGB_array[colorindex].green);
-    sendByte(RGB_array[colorindex].red);
-    sendByte(RGB_array[colorindex].blue);
-}
-
-
-//function which declares and sets a single neopixel as output
-//DON'T PUT THIS FUNCTION IN A LONG FOR LOOP WITHOUT RESET!!!!
-void New_ledsticklib::write_implementation( hwlib::xy pos, hwlib::color c ){
-    start[arraylength] = pos;
-    end[arraylength] = pos;
-    RGB_array[arraylength] = c;
-    arraylength++;
+    for(int i = 7; i >= 0; i--){
+        int bit = checkbit(value, i);
+        this->sendBit(bit);
     }
-
-
-void New_ledsticklib::write_line(hwlib::xy pos1, hwlib::xy pos2, hwlib::color c){
-   start[arraylength] = pos1;
-    end[arraylength] = pos2;
-    RGB_array[arraylength] = c;
-    arraylength++;
 }
 
-//function which sends bytes(depending on the given positiom )
+
+/*!
+@brief
+*this function changes the color of a led
+@param
+*pos the x and y coordinate of the pixel you want to set a color
+@param
+c   the RGB colorvalue of the pixel you want to send as output
+*/
+void New_ledsticklib::write_implementation( hwlib::xy pos, hwlib::color c ){
+    buffer[pos.x  + (pos.y * 8)] = c;
+}
+
+/*!
+@brief
+*this function is the same as write_implementation. The difference
+*is that this function is public while the write implementation
+*function is protected. The only reason this function exist is to match 
+*with hwlib::window.
+@param
+*pos the x and y coordinate of the pixel you want to set a color
+@param
+c   the RGB colorvalue of the pixel you want to send as output
+*/
+void New_ledsticklib::write(hwlib::xy pos, hwlib::color c){
+    write_implementation(pos, c);
+}
+
+/*!
+@brief
+*function which sends the colorvalues of the buffer array to each led
+*/
 void New_ledsticklib::flush(){
     for(int y = 0; y < size.y; y++){
         stick = y;
-            for(int x = 0; x < size.x; x++){
-                if(check_xy(x, y)){
-                    showcolor();
-                }
-                else{
-                    clear();
-                }
-            }
-            hwlib::wait_us(50);
+        for(int x = (y * 8); x < ((y + 1) * 8); x++){
+            sendByte(buffer[x].green);
+            sendByte(buffer[x].red);
+            sendByte(buffer[x].blue);
         }
+        hwlib::wait_us(50);
+    }
 }
 
-void New_ledsticklib::reset(){
-    arraylength = 0;
-}
-
-
-//function wich sends three bytes with the value zero to cause a neopixel to 
+/*!
+@brief
+*function wich sends three bytes with the value zero to each 
+*led which cause a led to go off
 //go off
+*/
 void New_ledsticklib::clear(){
-    sendByte(0);
-    sendByte(0);
-    sendByte(0);
+    for(int i = 0; i < (size.x * size.y); i++){
+        buffer[i] = hwlib::color(0,0,0);
+    }
 }
 
