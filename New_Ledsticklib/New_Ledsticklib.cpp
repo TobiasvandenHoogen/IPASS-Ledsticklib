@@ -34,8 +34,8 @@ int New_ledsticklib::checkbit(uint8_t value, int number){
 
 bool New_ledsticklib::check_xy(int x, int y){
 for(int i = 0; i < arraylength; i++){
- if((y >= start[i].y) && (y <= end[i].y)){
-    if((x >= start[i].x) && (x <= end[i].x)){
+ if(((y >= start[i].y) && (y <= end[i].y)) || (start[i].y == 8)){
+    if(((x >= start[i].x) && (x <= end[i].x)) || (start[i].x == 8)){
         colorindex = i;
         return true;
     }
@@ -47,20 +47,20 @@ for(int i = 0; i < arraylength; i++){
 //function which sets a bit of a stick(depending on fush function) as
 //output and sends a 0 or 1 bit depending on the bit parameter
 void New_ledsticklib::sendBit(bool bit){
-auto porta = confport(portarray[stick]);
-auto maska = confmask(pinarray[stick]);
-porta->PIO_OER = maska;
+auto port = confport(portarray[stick]);
+auto mask = confmask(pinarray[stick]);
+port->PIO_OER = mask;
 if(bit){
-    porta->PIO_SODR = maska; //pin high 
+    port->PIO_SODR = mask; //pin high 
     wait_busy(58);           //wait 58 * 11 = 638 nanoseconds
-    porta->PIO_CODR = maska; //pin low
+    port->PIO_CODR = mask; //pin low
     wait_busy(20);           //wait 20 * 11 = 220 nanoseconds
 }
 
 else{
-    porta->PIO_SODR = maska; //pin high
+    port->PIO_SODR = mask; //pin high
     wait_busy(10);           //wait 10 * 11 = 110 nanoseconds
-    porta->PIO_CODR = maska; //pin low   
+    port->PIO_CODR = mask; //pin low   
     wait_busy(58);           //wait 58 * 11 = 638 nanoseconds
 }
 }
@@ -82,7 +82,7 @@ void New_ledsticklib::showcolor(){
 
 
 //function which declares and sets a single neopixel as output
-//DON'T PUT THIS FUNCTION IN A LONG FOR LOOP!!!!
+//DON'T PUT THIS FUNCTION IN A LONG FOR LOOP WITHOUT RESET!!!!
 void New_ledsticklib::write_implementation( hwlib::xy pos, hwlib::color c ){
     start[arraylength] = pos;
     end[arraylength] = pos;
@@ -90,12 +90,6 @@ void New_ledsticklib::write_implementation( hwlib::xy pos, hwlib::color c ){
     arraylength++;
     }
 
-
-void New_ledsticklib::write_change(int index, hwlib::xy pos1, hwlib::xy pos2, hwlib::color c){
-    start[index] = pos1;
-    end[index] = pos2;
-    RGB_array[index] = c;
-}
 
 void New_ledsticklib::write_line(hwlib::xy pos1, hwlib::xy pos2, hwlib::color c){
    start[arraylength] = pos1;
@@ -118,6 +112,10 @@ void New_ledsticklib::flush(){
             }
             hwlib::wait_us(50);
         }
+}
+
+void New_ledsticklib::reset(){
+    arraylength = 0;
 }
 
 

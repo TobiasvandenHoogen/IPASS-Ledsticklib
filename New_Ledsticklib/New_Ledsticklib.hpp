@@ -6,8 +6,6 @@
 class New_ledsticklib: public hwlib::window{
 
 protected:
-hwlib::color GRB;
-hwlib::xy position;
 int* portarray;
 int* pinarray;
 int stick;
@@ -44,12 +42,18 @@ void write_implementation( hwlib::xy pos, hwlib::color c ) override;
 
 void write_change(int index, hwlib::xy pos1, hwlib::xy pos2, hwlib::color c);
 
+void write_change(int index, hwlib::xy pos1, hwlib::color c);
+
 void write_line( hwlib::xy pos1, hwlib::xy pos2, hwlib::color c);
+
+void write_rectangle(hwlib::xy pos1, hwlib::xy pos2, hwlib::color c);
 
 
 bool check_xy(int x, int y);
 
 void flush() override;
+
+void reset();
 
 void clear();
 
