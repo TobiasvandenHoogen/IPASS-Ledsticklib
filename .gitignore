@@ -4,6 +4,9 @@
 *.html
 *.css
 *.png
+*.bat
+*.tex
+*.eps
 
 #To filter out created makefile files
 
