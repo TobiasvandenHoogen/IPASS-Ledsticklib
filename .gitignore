@@ -8,14 +8,4 @@
 *.tex
 *.eps
 
-#To filter out created makefile files
 
-*.map
-*.elf
-*.o
-*.ld
-*.due
-*.native
-*.link
-*.bin
-*.c
