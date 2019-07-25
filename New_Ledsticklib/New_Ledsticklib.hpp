@@ -29,7 +29,7 @@ protected:
 int* portarray;
 int* pinarray;
 int stick;
-hwlib::color* buffer;
+hwlib::color buffer[56];
 
 //functions
 

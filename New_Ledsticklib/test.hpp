@@ -13,18 +13,6 @@ w (w)
 
 {}
 
-void bittest(){
-
-}
-
-void porttest(){
-
-}
-
-void colortest(){
-    
-}
-
 //This test should write the first led of the first stick as red
 void show_color(){
     w.clear();
@@ -49,6 +37,10 @@ void show_color_all(){
 //this test should do kitt with three different colors
 void colorkitt(){
  w.clear();
+ hwlib::color C[3]{hwlib::color(10, 0, 0), 
+ hwlib::color(0,10,0), 
+ hwlib::color(0,0,10)};
+ for(;;){
  for(int c = 0; c < 3; c++){
             for(int i = 0; i < w.size.x; i++){
                 for(int j = 0; j < w.size.y; j++){
@@ -60,10 +52,11 @@ void colorkitt(){
 
         }
     }
+}
 
 //This test should run the game succesfull
-void run_application(hwlib::window & w){
-    g game(w);
+void run_application(){
+    game g(w);
     g.maingame();
 
 }

@@ -67,8 +67,8 @@ int $\ast$ {\bfseries pinarray}
 \mbox{\Hypertarget{classNew__ledsticklib_a03f2df60807c903648a4b433a7da623d}\label{classNew__ledsticklib_a03f2df60807c903648a4b433a7da623d}} 
 int {\bfseries stick}
 \item 
-\mbox{\Hypertarget{classNew__ledsticklib_a74ba15d8aaa5de08215e0097eb8b90b2}\label{classNew__ledsticklib_a74ba15d8aaa5de08215e0097eb8b90b2}} 
-hwlib\+::color $\ast$ {\bfseries buffer}
+\mbox{\Hypertarget{classNew__ledsticklib_ad527f59fc2d976afa0b1d3e12efd5431}\label{classNew__ledsticklib_ad527f59fc2d976afa0b1d3e12efd5431}} 
+hwlib\+::color {\bfseries buffer} \mbox{[}56\mbox{]}
 \end{DoxyCompactItemize}
 
 
