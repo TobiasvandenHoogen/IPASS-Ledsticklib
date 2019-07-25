@@ -1,4 +1,6 @@
 #include "New_Ledsticklib.hpp"
+#ifndef GAME_HPP
+#define GAME_HPP
 
 class game {
 
@@ -98,5 +100,7 @@ void fallingball(){
 }
 
 };
+
+#endif
 
 
